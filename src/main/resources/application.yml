@@ -1,0 +1,29 @@
+##설정파일이 많고 복잡해지는 경우에는 YML 에 정리하는 방법도 좋다.
+##application.properties 나 yml 둘중에 하나만 있으면 된다.
+## 내용 적어주면 HikariCp가 해당 설정대로 database connection을 해준다.
+#spring:
+  #datasource:
+    #url=jdbc:mysql://127.0.0.1:3306/jpashop?useSSL=false&useUnicode=true&serverTimezone=Asia/Seoul
+    #username=root
+    #assword=1111
+    #driver-class-name=com.mysql.cj.jdbc.Driver
+## ddl-auto을 create로 주게 되면 app 실행시점에 가지고 있는 기존 테이블을 지우고
+## 자동으로 테이블을 다시 만들어주게 된다.
+#jpa:
+  #hibernate:
+    #ddl-auto=create
+  #properties:
+    #hibernate
+      #show_sql:true
+      #format_sql=true
+
+#hibernate가 생성하는 sql 을 SYSTEM.OUT 에 출력하지 않고 로그에 출력하기 위한 설정
+#logging:
+  #level:
+    #org.hibernate.SQL:debug
+    #org.hibernate.type:trace
+#생각보다 많은 자원을 소모하기 때문에 운영 환경에서는 반드시 enable-logging 를 false로 두고 사용하지 않도록 설정해두어야 한다.
+#decorator:
+#  datasource:
+#    p6spy:
+#      enable-logging: true
